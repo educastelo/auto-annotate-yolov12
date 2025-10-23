@@ -9,13 +9,9 @@ auto-annotate-yolov12/
 ├── dataset/
 │   ├── images/              # Imagens do dataset
 │   └── labels/              # Anotações em formato YOLO
-│       └── classes.txt      # Lista de classes (person, bicycle, car, motorbike, bus, truck)
 ├── models/
 │   └── yolo12x.pt          # Modelo YOLO v12
-├── labelimg-custom/         # Versão customizada do labelImg
-│   ├── README.md           # Documentação das customizações
-│   ├── CHANGELOG.md        # Histórico de mudanças
-│   └── run_labelimg.sh     # Script para executar o labelImg
+├── images_with_detections/  # Imagens com detecções visualizadas
 ├── label.py                 # Script de anotação automática
 ├── count_classes.py         # Contador de classes no dataset
 ├── save_images_with_detections.py  # Salva imagens com detecções visualizadas
@@ -46,22 +42,6 @@ Salva imagens com as detecções desenhadas para visualização.
 ### `split_dataset.py`
 Divide o dataset em conjuntos de treino, validação e teste.
 
-## labelImg Customizado
-
-Este projeto inclui uma versão customizada do [labelImg](https://github.com/HumanSignal/labelImg) com correções para compatibilidade com PyQt5/PyQt6 mais recentes.
-
-### Como usar o labelImg customizado
-
-```bash
-# Usando o script de execução
-./labelimg-custom/run_labelimg.sh dataset/images dataset/labels/classes.txt
-
-# Ou diretamente com Python
-python labelimg-custom/labelImg/labelImg.py dataset/images dataset/labels/classes.txt
-```
-
-Para mais detalhes sobre as customizações, consulte [labelimg-custom/README.md](labelimg-custom/README.md).
-
 ## Instalação
 
 ```bash
@@ -81,12 +61,6 @@ pip install -r requirements.txt
 
 ```bash
 python label.py
-```
-
-### Verificar anotações com labelImg
-
-```bash
-./labelimg-custom/run_labelimg.sh dataset/images dataset/labels/classes.txt
 ```
 
 ### Contar classes no dataset
