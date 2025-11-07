@@ -31,7 +31,7 @@ auto-annotate-yolov12/
 ## Scripts Disponíveis
 
 ### `label.py`
-Script principal para anotação automática de imagens usando YOLO v12.
+Script principal para anotação automática de imagens usando YOLO v12. Processa todas as imagens do diretório `dataset/images/` e salva as anotações em formato YOLO no diretório `dataset/labels/`. Aplica automaticamente o remapeamento de classes conforme definido no código.
 
 ### `count_classes.py`
 Conta quantas anotações de cada classe existem no dataset.
@@ -40,7 +40,12 @@ Conta quantas anotações de cada classe existem no dataset.
 Salva imagens com as detecções desenhadas para visualização.
 
 ### `split_dataset.py`
-Divide o dataset em conjuntos de treino, validação e teste.
+Divide o dataset em lotes de 1000 imagens e suas respectivas anotações. Cada lote é criado em um diretório separado (`dataset_batch_1`, `dataset_batch_2`, etc.) contendo:
+- `images/` - Imagens do lote
+- `labels/` - Anotações correspondentes em formato YOLO
+- `classes.txt` - Arquivo com a lista de classes
+
+Cada diretório de lote é automaticamente compactado em um arquivo ZIP separado (`dataset_batch_1.zip`, `dataset_batch_2.zip`, etc.).
 
 ## Instalação
 
@@ -68,6 +73,14 @@ python label.py
 ```bash
 python count_classes.py
 ```
+
+### Dividir dataset em lotes
+
+```bash
+python split_dataset.py
+```
+
+Este script divide o dataset em lotes de 1000 imagens, cria a estrutura de diretórios necessária e gera arquivos ZIP para cada lote.
 
 ## Configuração YOLO
 
